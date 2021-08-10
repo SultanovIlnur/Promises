@@ -24,7 +24,7 @@ function recipeCheck(...input) {
   return new Promise((resolve, reject) => {
     let food = cookFood(input);
     setTimeout(() => {
-      if (food == recipe) {
+      if (JSON.stringify(food) === JSON.stringify(recipe)) {
         resolve("true");
       } else {
         reject("false");
@@ -55,10 +55,13 @@ var promises = [
 ];
 
 function checkRecipes() {
-  Promise.all(promises)
-    .then((result) => console.log(result))
+  promises.forEach(function (promise){
+    promise.then((result) => console.log(result))
     .catch((err) => console.log(err));
+  });
 }
+
+
 
 $(document).ready(function () {
   $("#btn").on("click", () => checkRecipes());
