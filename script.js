@@ -42,9 +42,11 @@ var promises = [
   ),
   recipeCheck(
     "add raspberry",
-    "add mushrooms",
-    "make dough",
+    "add two mushrooms",
     "put in the oven"
+  ),
+  recipeCheck(
+    "make nothing",
   ),
   recipeCheck(
     "make dough",
