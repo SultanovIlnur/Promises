@@ -10,19 +10,19 @@ var recipe = [
   "make dough",
   "put in the oven",
 ];
-//Также здесь используется оператор rest
+
 function cookFood(ingredients) {
   let currentRecipe = [];
-  for (let ingredient of ingredients) {
+  for (ingredient of ingredients) {
     currentRecipe.push(ingredient);
   }
   return currentRecipe;
 }
-//конструктор
+
 function recipeCheck(...input) {
   return new Promise((resolve, reject) => {
-    var food = cookFood(input);
-    setTimeout(()=>{
+    let food = cookFood(input);
+    setTimeout(() => {
       if (food == recipe) {
         resolve("true");
       } else {
@@ -33,26 +33,24 @@ function recipeCheck(...input) {
 }
 
 var promises = [
-    recipeCheck(
-      "make dough",
-      "put in the oven",
-      "add mushrooms",
-      "add raspberry"
-    ),
-    recipeCheck(
-      "add raspberry",
-      "add mushrooms",
-      "make dough",
-      "put in the oven"
-    ),
+  recipeCheck(
+    "add raspberry",
+    "add mushrooms",
+    "make dough",
+    "put in the oven"
+  ),
+  recipeCheck(
+    "make dough",
+    "put in the oven",
+    "add mushrooms",
+    "add raspberry"
+  ),
 ];
 
-function checkRecipes(){
-  for (promise in promises) {
-    promise.then(
-      (result) => console.log(result)).
-      catch((err) => console.log(err));
-  }
+function checkRecipes() {
+  Promise.all(promises)
+    .then((result) => console.log(result))
+    .catch((err) => console.log(err));
 }
 
 $(document).ready(function () {
