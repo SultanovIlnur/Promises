@@ -11,18 +11,18 @@ var recipe = [
   "put in the oven",
 ];
 //Также здесь используется оператор rest
-function cookFood(...ingredients) {
+function cookFood(ingredients) {
   let currentRecipe = [];
   for (let ingredient of ingredients) {
-    currentRecipe = currentRecipe.push(ingredient);
+    currentRecipe.push(ingredient);
   }
   return currentRecipe;
 }
 //конструктор
-function recipeCheck(input) {
+function recipeCheck(...input) {
   return new Promise((resolve, reject) => {
-    let food = cookFood(input);
-    setTimeout(function(){
+    var food = cookFood(input);
+    setTimeout(()=>{
       if (food == recipe) {
         resolve("true");
       } else {
@@ -50,9 +50,8 @@ var promises = [
 function checkRecipes(){
   for (promise in promises) {
     promise.then(
-      (result) => console.log(result),
-      (err) => console.log(err)
-    );
+      (result) => console.log(result)).
+      catch((err) => console.log(err));
   }
 }
 
