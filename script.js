@@ -19,6 +19,7 @@ function cookFood(ingredients) {
   return currentRecipe;
 }
 
+//Конструктор промиса
 function recipeCheck(...input) {
   return new Promise((resolve, reject) => {
     let food = cookFood(input);
@@ -33,6 +34,12 @@ function recipeCheck(...input) {
 }
 
 var promises = [
+  recipeCheck(
+    "add raspberry",
+    "add mushrooms",
+    "make dough",
+    "put in the oven"
+  ),
   recipeCheck(
     "add raspberry",
     "add mushrooms",
